@@ -11,6 +11,7 @@
         const mintValueId = "mint-inputtext";
 
         const transferButtonId = "transfer-button";
+        const transferSenderValueId = "transfer-from-inputtext";
         const transferReceipiantValueId = "transfer-to-inputtext";
         const transferAmountValueId = "transfer-amount-inputtext";
 
@@ -20,9 +21,10 @@
         };
 
         doc.getElementById(transferButtonId).onclick = () => {
+            const from = doc.getElementById(transferSenderValueId).value;
             const to = doc.getElementById(transferReceipiantValueId).value;
             const tokenId = doc.getElementById(transferAmountValueId).value;
-            transfer(to, parseInt(tokenId, 10));
+            transfer(from, to, parseInt(tokenId, 10));
         };
     };
 
@@ -64,7 +66,7 @@
     };
 
     const render = async () => {
-        const userAddressId = "transfer-from-label";
+        const userAddressId = "transfer-from-inputtext";
         const balanceId = "balance-label";
         const nameClass = "name-label";
         const symbolClass = "symbol-label";
@@ -72,7 +74,7 @@
 
         refreshContract()
             .then(async ([contract, accounts]) => {
-                document.getElementById(userAddressId).textContent =  accounts[0];
+                document.getElementById(userAddressId).value = accounts[0];
 
                 const nextTokenId = await contract.nextTokenId().call({from:accounts[0]});
 
@@ -127,10 +129,10 @@
             );
     };
 
-    const transfer = async (receipiant, tokenId) => {
+    const transfer = async (sender, receipiant, tokenId) => {
         refreshContract()
             .then(([contract, accounts]) => contract
-                .transferFrom(accounts[0], receipiant, tokenId)
+                .transferFrom(sender, receipiant, tokenId)
                 .send({from: accounts[0]})
                 .then(() => render())
             );

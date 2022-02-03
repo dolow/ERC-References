@@ -14,13 +14,28 @@
                 This sample provides ERC721 based token minting.
             </p>
             <h2>Instruction</h2>
-            <ul>
-                <li>Get some testnet ETH from faucet.</li>
-                <li>Enter any URI you want to mint with.</li>
-                <li>Press "Mint" button,</li>
-                <li>Newly minted NFT (<span class="symbol-label"></span>) is transfered to your wallet.</li>
-                <li>Import ERC721 token address to show NFT as <span class="symbol-label"></span> in the wallet.</li>
-            </ul>
+            <div>
+                <h3>Minting</h3>
+                <ul>
+                    <li>Get some testnet ETH from faucet.</li>
+                    <li>Enter any URI you want to mint with.</li>
+                    <li>Press "Mint" button,</li>
+                    <li>Newly minted NFT (<span class="symbol-label"></span>) is transfered to your wallet.</li>
+                    <li>Import ERC721 token address to show NFT as <span class="symbol-label"></span> in the wallet.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Transfering</h3>
+                <ul>
+                    <li>Get some testnet ETH from faucet.</li>
+                    <li>Enter any addres you want to transfer your NFT.</li>
+                    <li>Enter token ID you want to transfer.</li>
+                    <li>Press "Transfer" button,</li>
+                    <li>Ownership moves and it can be checked by wallet.</li>
+                    <li>You can also test unapprioved transfer, try transfer NFT that is not owned by the sender.</li>
+                </ul>
+            </div>
+
             <p>
                 * Instruction above is based on Metamask UI.
             </p>
@@ -82,7 +97,7 @@
         <div>
             <div>
                 <span>From:</span>
-                <span id="transfer-from-label"></span>
+                <input id="transfer-from-inputtext" type="text" value="" style="width: 360px;" />
             </div>
             <div>
                 <span>To:</span>
