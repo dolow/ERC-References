@@ -95,4 +95,29 @@ contract("Erc721", (accounts) => {
             assert.equal(await erc721.tokenExists(tokenId), false);
         });
     });
+
+    context("getTokenUri", () => {
+        context("when token uri is not passed", () => {
+            it ("should return empty string", async () => {
+                const erc721 = await Erc721Sample.deployed();
+                const tokenId = await erc721.nextTokenId();
+                await erc721.mint(accounts[0], tokenId);
+
+                const expectUri = "";
+                const actualUri = await erc721.getTokenUri(tokenId);
+                assert.equal(expectUri, actualUri);
+            });
+        });
+        context("when token uri is registered as not empty string", () => {
+            it ("should return registered uri", async () => {
+                const expectUri = "https://www.google.com";
+                const erc721 = await Erc721Sample.deployed();
+                const tokenId = await erc721.nextTokenId();
+                await erc721.mint(accounts[0], tokenId, expectUri);
+
+                const actualUri = await erc721.getTokenUri(tokenId);
+                assert.equal(expectUri, actualUri);
+            });
+        });
+    });
 });

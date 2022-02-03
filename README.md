@@ -31,7 +31,13 @@ Launch geth console
 > eth.sendTransaction({from: eth.coinbase, to: <address>, value: web3.toWei(amount, "ether")});
 ```
 
-## ERC20
+### Deploy truffle DApps
+
+```
+% truffle migrate --network geth
+```
+
+## See how it works
 
 Serve `front/erc20.html` somehow.
 

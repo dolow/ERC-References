@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>ERC 20 Samples</title>
+    <title>ERC 721 Samples</title>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
-    <script type="text/javascript" src="./erc20_abi.js"></script>
-    <script type="text/javascript" src="./erc20.js"></script>
+    <script type="text/javascript" src="./erc721_abi.js"></script>
+    <script type="text/javascript" src="./erc721.js"></script>
 </head>
 <body>
     <div>
-        <h1>ERC 20 Sample</h1>
+        <h1>ERC 721 Sample</h1>
         <div>
             <p>
-                This sample provides ERC20 based token faucet.
+                This sample provides ERC721 based token minting.
             </p>
             <h2>Instruction</h2>
             <ul>
                 <li>Get some testnet ETH from faucet.</li>
-                <li>Enter amount of "<span class="name-label"></span> (<span class="symbol-label"></span>)" you want.</li>
-                <li>Press "Faucet" button,</li>
-                <li>Entered <span class="symbol-label"></span> is minted and transfered to your wallet.</li>
-                <li>Import ERC20 token address to show <span class="symbol-label"></span> as your asset in the wallet.</li>
+                <li>Enter any URI you want to mint with.</li>
+                <li>Press "Mint" button,</li>
+                <li>Newly minted NFT (<span class="symbol-label"></span>) is transfered to your wallet.</li>
+                <li>Import ERC721 token address to show NFT as <span class="symbol-label"></span> in the wallet.</li>
             </ul>
             <p>
                 * Instruction above is based on Metamask UI.
@@ -39,7 +39,7 @@
                         <input
                             id="contractaddress-inputtext"
                             type="text"
-                            value="0xdC94645B761970BC0439544957b1500F0398A27f"
+                            value="0x058f9D496e0C49eF5dbd4d6d64f776c593a37a88"
                             style="width: 360px;"
                         />
                     </div>
@@ -55,27 +55,24 @@
                 </div>
             </div>
             <div>
-                <h3>Total Supply</h3>
+                <h3>Owned Token IDs</h3>
                 <div>
-                    <div>
-                        <span id="totalsupply-label"></span>
-                        <span class="symbol-label"></span>
-                    </div>
+                    <ul id="tokenids-label">
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
     <hr />
     <div>
-        <h2>Faucet</h2>
+        <h2>Mint</h2>
         <div>
             <div>
-                <span>Amount:</span>
-                <input id="faucet-inputtext" type="text" value="1" style="width: 32px;" />
-                <span class="symbol-label"></span>
+                <span>URL:</span>
+                <input id="mint-inputtext" type="text" value="https://www.google.com" style="width: 256px;" />
             </div>
             <div>
-                <input id="faucet-button" type="button" value="Faucet" />
+                <input id="mint-button" type="button" value="Mint" />
             </div>
         </div>
     </div>
@@ -92,9 +89,8 @@
                 <input id="transfer-to-inputtext" type="text" value="" style="width: 360px;" />
             </div>
             <div>
-                <span>Amount:</span>
+                <span>Token ID:</span>
                 <input id="transfer-amount-inputtext" type="text" value="1" style="width: 32px;" />
-                <span class="symbol-label"></span>
             </div>
             <div>
                 <input id="transfer-button" type="button" value="Transfer" />
