@@ -45,11 +45,20 @@
             }),
             // accounts
             new Promise((resolve) => {
-                window.ethereum.request({ method: 'eth_requestAccounts' })
+                window.ethereum
+                    .request({ method: 'eth_requestAccounts' })
                     .then(accounts => {
                         state.accounts = accounts;
                         resolve(state.accounts);
                     })
+                    .catch((error) => {
+                        if (error.code === 4001) {
+                            // EIP-1193 userRejectedRequest error
+                            console.log('Please connect to Wallet.');
+                        } else {
+                            console.error(error);
+                        }
+                    });
             }),
         ]);
     };
