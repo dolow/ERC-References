@@ -16,10 +16,10 @@
             <h2>Instruction</h2>
             <ul>
                 <li>Get some testnet ETH from faucet.</li>
-                <li>Enter amount of "Nice Token (NT)" you want.</li>
+                <li>Enter amount of "<span class="name-label"></span> (<span class="symbol-label"></span>)" you want.</li>
                 <li>Press "Faucet" button,</li>
-                <li>Entered NT is minted and transfered to your wallet.</li>
-                <li>Import ERC20 token address to show NT as your asset in the wallet.</li>
+                <li>Entered <span class="symbol-label"></span> is minted and transfered to your wallet.</li>
+                <li>Import ERC20 token address to show <span class="symbol-label"></span> as your asset in the wallet.</li>
             </ul>
             <p>
                 * Instruction above is based on Metamask UI.
@@ -28,27 +28,40 @@
     </div>
     <hr />
     <div>
-        <h2>Balance</h2>
+        <h2>Stats</h2>
         <div>
             <div>
-                <span>NT :</span>
-                <span id="balance-label"></span>
+                <h3>Contract</h3>
+                <div>
+                    <div>
+                        <span>Address :</span>
+                        <!-- entered address is for local testnet, it is subject to change -->
+                        <input
+                            id="contractaddress-inputtext"
+                            type="text"
+                            value="0xdC94645B761970BC0439544957b1500F0398A27f"
+                            style="width: 360px;"
+                        />
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <hr />
-    <div>
-        <h2>Contract</h2>
-        <div>
             <div>
-                <span>Address :</span>
-                <!-- entered address is for local testnet, it is subject to change -->
-                <input
-                    id="contractaddress-inputtext"
-                    type="text"
-                    value="0xdC94645B761970BC0439544957b1500F0398A27f"
-                    style="width: 360px;"
-                />
+                <h3>Balance</h3>
+                <div>
+                    <div>
+                        <span id="balance-label"></span>
+                        <span class="symbol-label"></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>Total Supply</h3>
+                <div>
+                    <div>
+                        <span id="totalsupply-label"></span>
+                        <span class="symbol-label"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -57,9 +70,9 @@
         <h2>Faucet</h2>
         <div>
             <div>
-                <span>Faucet amount:</span>
+                <span>Amount:</span>
                 <input id="faucet-inputtext" type="text" value="1" style="width: 32px;" />
-                <span>NT</span>
+                <span class="symbol-label"></span>
             </div>
             <div>
                 <input id="faucet-button" type="button" value="Faucet" />
@@ -79,9 +92,9 @@
                 <input id="transfer-to-inputtext" type="text" value="" style="width: 360px;" />
             </div>
             <div>
-                <span>Transfer amount:</span>
+                <span>Amount:</span>
                 <input id="transfer-amount-inputtext" type="text" value="1" style="width: 32px;" />
-                <span>NT</span>
+                <span class="symbol-label"></span>
             </div>
             <div>
                 <input id="transfer-button" type="button" value="Transfer" />

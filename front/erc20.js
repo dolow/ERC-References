@@ -66,14 +66,30 @@
     const render = async () => {
         const userAddressId = "transfer-from-label";
         const balanceId = "balance-label";
+        const supplyId = "totalsupply-label";
+        const nameClass = "name-label";
+        const symbolClass = "symbol-label";
+
         refreshContract()
             .then(([contract, accounts]) => {
                 document.getElementById(userAddressId).textContent =  accounts[0];
                 return Promise.all([
                     contract.balanceOf(accounts[0]).call({from: accounts[0]}),
                     contract.decimals().call({from: accounts[0]}),
-                ]).then(([balance, decimals]) => {
-                    document.getElementById(balanceId).textContent =  `${balance / (10 ** decimals)}`;
+                    contract.totalSupply().call({from: accounts[0]}),
+                    contract.name().call({from: accounts[0]}),
+                    contract.symbol().call({from: accounts[0]}),
+                ]).then(([balance, decimals, supply, name, symbol]) => {
+                    document.getElementById(balanceId).textContent = `${balance / (10 ** decimals)}`;
+                    document.getElementById(supplyId).textContent = `${supply / (10 ** decimals)}`;
+                    const nameElems = document.getElementsByClassName(nameClass);
+                    for (let i = 0; i < nameElems.length; i += 1) {
+                        nameElems[i].innerText = name;
+                    }
+                    const symbolElems = document.getElementsByClassName(symbolClass);
+                    for (let i = 0; i < symbolElems.length; i += 1) {
+                        symbolElems[i].innerText = symbol;
+                    }
                 });
             });
     };
