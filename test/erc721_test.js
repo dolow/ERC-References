@@ -1,6 +1,6 @@
 const Erc721Sample = artifacts.require("Erc721Sample");
 
-contract("Erc721", (accounts) => {
+contract("Erc721Sample", (accounts) => {
     it ("has been deployed succcessfully", async () => {
         const deployed = await Erc721Sample.deployed();
         assert(deployed, "contract not deployed");

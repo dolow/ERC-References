@@ -30,9 +30,8 @@
 
     const initEtherium = async () => {
         state.web3 = new Web3(window.ethereum);
-        window.ethereum.on('accountsChanged', (accounts) => {
-            render();
-        });
+        window.ethereum.on('accountsChanged', (accounts) => render());
+        window.ethereum.on('chainChanged', (accounts) => render());
     };
 
     const refreshContract = () => {
